@@ -1,5 +1,5 @@
 ## Welcome to Dennis Weber's Blog
 
-Here you can find articles (well, currenlty there is only one) I've written.
+Here you can find articles (well, currently there is only one) I've written.
 
-TODO: Link to LP Dishonored
+* [2020-01-11: How I solved Dishonored 2's Jindosh Riddle using linear programming](./2020-01-11_How_I_solved_Dishonored_2s_Jindosh_Riddle_using_linear_programming) 
