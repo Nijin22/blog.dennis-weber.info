@@ -44,7 +44,7 @@ This sounded like the kind of thing I studied for one semester during my bachelo
 ## Approach
 Using linear programming to solve such a puzzle doesn't sound so hard, in theory. I, however, haven't done anything like that in years. So I obviously had some ~~problems~~ challenges.
 
-The first step involves finding the magical black box (the "solver") that will transform your problem description to an actualy solution. Don't ask me how it does that - it's called "simplex algorithm" but I'm way to stupid to understand it. I no longer have access to the tools I had during university, but luckily there are free alternatives online. I've chosen https://online-optimizer.appspot.com.
+The first step involves finding the magical black box (the "solver") that will transform your problem description to an actualy solution. Don't ask me how it does that - it's called "simplex algorithm" but I'm way to stupid to understand it. I no longer have access to the tools I had during university, but luckily there are free alternatives online. I've chosen <a href="https://online-optimizer.appspot.com" target="_blank">this online solver</a>.
 
 The next step involves creating a variable for every single option that might be possible. Stuff like "Is the first seat taken by Lady Winslow?", "Is the second seat taken by Lady Winslow?", "Is the first seat taken by someone who drinks rum?" - and so on. These are quite a lot - 125 to be exact. (5 seat positions, times 5 options, times 5 attributes.) Luckily this is done quite quickly thanks to the support for arrays in the modelling language <a href="https://online-optimizer.appspot.com/doc/gmpl/index.html#SEC_Contents" target="_blank">GNU MathProg</a>:
 
