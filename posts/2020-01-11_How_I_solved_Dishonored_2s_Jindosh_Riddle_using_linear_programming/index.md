@@ -39,30 +39,32 @@ So I recently started mission #6 of Dishonored 2 and faced the "Jindosh Riddle".
 >
 > But who owned each?
 
-This sounded like the kind of thing I studied for one semester during my bachelors degrees: [Linear programming](https://en.wikipedia.org/wiki/Linear_programming) a method to solve and optimize[^1] a mathematical model. I never had the chance to actually apply what I learned in that course so my nerd brain fired up!
+This sounded like the kind of thing I studied for one semester during my bachelors degrees: <a href="https://en.wikipedia.org/wiki/Linear_programming" target="_blank">Linear programming</a> a method to solve and optimize[^1] a mathematical model. I never had the chance to actually apply what I learned in that course so my nerd brain fired up!
 
 ## Approach
 Using linear programming to solve such a puzzle doesn't sound so hard, in theory. I, however, haven't done anything like that in years. So I obviously had some ~~problems~~ challenges.
 
 The first step involves finding the magical black box (the "solver") that will transform your problem description to an actualy solution. Don't ask me how it does that - it's called "simplex algorithm" but I'm way to stupid to understand it. I no longer have access to the tools I had during university, but luckily there are free alternatives online. I've chosen https://online-optimizer.appspot.com.
 
-The next step involves creating a variable for every single option that might be possible. Stuff like "Is the first seat taken by Lady Winslow?", "Is the second seat taken by Lady Winslow?", "Is the first seat taken by someone who drinks rum?" - and so on. These are quite a lot - 125 to be exact. (5 seat positions, times 5 options, times 5 attributes.) Luckily this is done quite quickly thanks to the support for arrays in the modelling language [GNU MathProg](https://online-optimizer.appspot.com/doc/gmpl/index.html#SEC_Contents):
+The next step involves creating a variable for every single option that might be possible. Stuff like "Is the first seat taken by Lady Winslow?", "Is the second seat taken by Lady Winslow?", "Is the first seat taken by someone who drinks rum?" - and so on. These are quite a lot - 125 to be exact. (5 seat positions, times 5 options, times 5 attributes.) Luckily this is done quite quickly thanks to the support for arrays in the modelling language <a href="https://online-optimizer.appspot.com/doc/gmpl/index.html#SEC_Contents" target="_blank">GNU MathProg</a>:
 
-    # possible attributes
-    set poss := { 1 .. 5 }; # starting from the left. I.e. 1 => leftmost, 5 = rightmost
-    set names := { "winslow", "marcolla", "contee", "natsiou", "finch" };
-    set heirlooms := { "diamond", "snuff tin", "war medal", "bird pendant", "ring"};
-    set colors := { "white", "red", "green", "blue", "purple" };
-    set homes := { "dunwall", "dabokva", "baleton", "karnaca", "fraeport" };
-    set drinks := { "rum", "absinth", "wine", "beer", "whiskey" };
+```
+# possible attributes
+set poss := { 1 .. 5 }; # starting from the left. I.e. 1 => leftmost, 5 = rightmost
+set names := { "winslow", "marcolla", "contee", "natsiou", "finch" };
+set heirlooms := { "diamond", "snuff tin", "war medal", "bird pendant", "ring"};
+set colors := { "white", "red", "green", "blue", "purple" };
+set homes := { "dunwall", "dabokva", "baleton", "karnaca", "fraeport" };
+set drinks := { "rum", "absinth", "wine", "beer", "whiskey" };
 
-    # create decision variables
-    # all are binary. 0 = false, 1 = true
-    var has_name{poss, names} binary;
-    var has_heirloom{poss, heirlooms} binary;
-    var has_color{poss, colors} binary;
-    var has_home{poss, homes} binary;
-    var has_drink{poss, drinks} binary;
+# create decision variables
+# all are binary. 0 = false, 1 = true
+var has_name{poss, names} binary;
+var has_heirloom{poss, heirlooms} binary;
+var has_color{poss, colors} binary;
+var has_home{poss, homes} binary;
+var has_drink{poss, drinks} binary;
+```
 
 Then we need to set up "constraints", mathematical formulas that constrain the variables we just created. The first few are quite easy: Each position has exactly one instance of an attribute set to true, i.e. the sum of all the variables for one attribute must equal to true. The same thing applies the other way round, each attribute is true on only one position. This prevents the solver from giving the same heirloom to everyone or seating multiple people at the same position:
 
@@ -241,7 +243,7 @@ It actually worked! On the first try. This is probably something I never managed
 ## Conclusion
 A *huuuuuge* thanks to Arkane Studios. I think adding (and testing) this puzzle, which seems to be generated randomly on every new play-through, is a ton of work. I had very much fun solving this monster and applying skills I'd never use elsewhere. This was something really unique for a video game!
 
-The full code I used can be found in this [GitHub Gist](https://gist.github.com/Nijin22/a5c2e55f752463fec21c79e94a70d8a8).
+The full code I used can be found in this <a href="https://gist.github.com/Nijin22/a5c2e55f752463fec21c79e94a70d8a8" target="_blank">GitHub Gist</a>.
 
 ## Footnotes
 [^1]: Optimization doesn't play a role for the Jindosh Riddle, as there is only one valid solution.
