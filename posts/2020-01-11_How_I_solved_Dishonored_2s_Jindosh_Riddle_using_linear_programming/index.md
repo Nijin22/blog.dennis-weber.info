@@ -44,7 +44,7 @@ This sounded like the kind of thing I studied for one semester during my bachelo
 ## Approach
 Using linear programming to solve such a puzzle doesn't sound so hard, in theory. I, however, haven't done anything like that in years. So I obviously had some ~~problems~~ challenges.
 
-The first step involves finding the magical black box (the "solver") that will transform your problem description to an actualy solution. Don't ask me how it does that - it's called "simplex algorithm" but I'm way to stupid to understand it. I no longer have access to the tools I had during university, but luckily there are free alternatives online. I've chosen <a href="https://online-optimizer.appspot.com" target="_blank">this online solver</a>.
+The first step involves finding the magical black box (the "solver") that will transform your problem description to an actual solution. Don't ask me how it does that - it's called "simplex algorithm" but I'm way too stupid to understand it. I no longer have access to the tools I had during university, but luckily there are free alternatives online. I've chosen <a href="https://online-optimizer.appspot.com" target="_blank">this online solver</a>.
 
 The next step involves creating a variable for every single option that might be possible. Stuff like "Is the first seat taken by Lady Winslow?", "Is the second seat taken by Lady Winslow?", "Is the first seat taken by someone who drinks rum?" - and so on. These are quite a lot - 125 to be exact. (5 seat positions, times 5 options, times 5 attributes.) Luckily this is done quite quickly thanks to the support for arrays in the modelling language <a href="https://online-optimizer.appspot.com/doc/gmpl/index.html#SEC_Contents" target="_blank">GNU MathProg</a>:
 
@@ -68,7 +68,7 @@ var has_drink{poss, drinks} binary;
 
 Then we need to set up "constraints", mathematical formulas that constrain the variables we just created. The first few are quite easy: Each position has exactly one instance of an attribute set to true, i.e. the sum of all the variables for one attribute must equal to true. The same thing applies the other way round, each attribute is true on only one position. This prevents the solver from giving the same heirloom to everyone or seating multiple people at the same position:
 
-    # each position has exactly one instance of an attribut true
+    # each position has exactly one instance of an attribute true
     subject to position_has_name{pos in poss}: sum{name in names} has_name[pos, name] = 1;
     subject to position_has_heirloom{pos in poss}: sum{heirloom in heirlooms} has_heirloom[pos, heirloom] = 1;
     subject to position_has_color{pos in poss}: sum{color in colors} has_color[pos, color] = 1;
@@ -82,7 +82,7 @@ Then we need to set up "constraints", mathematical formulas that constrain the v
     subject to home_has_position{home in homes}: sum{pos in poss} has_home[pos, home] = 1;
     subject to drink_has_position{drink in drinks}: sum{pos in poss} has_drink[pos, drink] = 1;
 
-We now get to the constraints from the ridddle's text itself. Those directly refering a seat position are still somewhat simple. We just set THAT specific variable to true (i.e. "1"):
+We now get to the constraints from the riddle's text itself. Those directly referring a seat position are still somewhat simple. We just set THAT specific variable to true (i.e. "1"):
 
     # Madam Natsiou was at the far left, next to the guest wearing a red jacket.
     subject to natsiou_sat_left:
@@ -238,7 +238,7 @@ Aaaaaand...
   Unfortunately, your browser doesn't support embedded videos.
 </video> 
 
-It actually worked! On the first try. This is probably something I never managed during my entire programming carreer. I feel kinda proud.
+It actually worked! On the first try. This is probably something I never managed during my entire programming career. I feel kinda proud.
 
 ## Conclusion
 A *huuuuuge* thanks to Arkane Studios. I think adding (and testing) this puzzle, which seems to be generated randomly on every new play-through, is a ton of work. I had very much fun solving this monster and applying skills I'd never use elsewhere. This was something really unique for a video game!
