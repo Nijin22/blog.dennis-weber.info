@@ -243,7 +243,8 @@ It actually worked! On the first try. This is probably something I never managed
 ## Conclusion
 A *huuuuuge* thanks to Arkane Studios. I think adding (and testing) this puzzle, which seems to be generated randomly on every new play-through, is a ton of work. I had very much fun solving this monster and applying skills I'd never use elsewhere. This was something really unique for a video game!
 
-The full code I used can be found in this <a href="https://gist.github.com/Nijin22/a5c2e55f752463fec21c79e94a70d8a8" target="_blank">GitHub Gist</a>.
+This is the full code for the model:
+<script src="https://gist.github.com/Nijin22/a5c2e55f752463fec21c79e94a70d8a8.js"></script>
 
 ## Footnotes
 [^1]: Optimization doesn't play a role for the Jindosh Riddle, as there is only one valid solution.
