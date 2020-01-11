@@ -1,3 +1,4 @@
+{% raw  %}
 # How I solved Dishonored 2's Jindosh Riddle using linear programming
 
 **Spoiler advice**: This posts (obviously) contains a way how to solve the "Jindosh Riddle" in the video game Dishonored 2. I'm not sure if you consider that a "spoiler", but if you prefer to solve it completely on your own you should probably stop reading now.
@@ -244,3 +245,4 @@ The full code I used can be found in this [GitHub Gist](https://gist.github.com/
 
 ## Footnotes
 [^1]: Optimization doesn't play a role for the Jindosh Riddle, as there is only one valid solution.
+{% endraw %}
