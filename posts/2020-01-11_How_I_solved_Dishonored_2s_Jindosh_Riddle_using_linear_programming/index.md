@@ -1,3 +1,7 @@
+---
+title: How I solved Dishonored 2's Jindosh Riddle using linear programming
+---
+
 {% raw  %}
 # How I solved Dishonored 2's Jindosh Riddle using linear programming
 
