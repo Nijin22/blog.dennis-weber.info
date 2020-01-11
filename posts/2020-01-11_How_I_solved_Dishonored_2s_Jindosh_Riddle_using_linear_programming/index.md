@@ -1,5 +1,6 @@
 ---
 title: How I solved Dishonored 2's Jindosh Riddle using linear programming
+show_header: false
 ---
 
 {% raw  %}
